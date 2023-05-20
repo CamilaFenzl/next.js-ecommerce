@@ -1,3 +1,3 @@
 export default function HomePage() {
-  return <main>My name is</main>;
+  return <main>Pottery world!</main>;
 }
