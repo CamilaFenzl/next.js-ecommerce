@@ -5,21 +5,28 @@ export default function Navigation() {
   return (
     <Navbar bg="light" expand="lg">
       <Container>
-        <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
+        <Navbar.Brand href="#home">Pottery World</Navbar.Brand>
         <Navbar.Toggle aria-controls="basic-navbar-nav" />
         <Navbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
-            <Nav.Link href="#home">Home</Nav.Link>
-            <Nav.Link href="#link">Link</Nav.Link>
-            <NavDropdown title="Dropdown" id="basic-nav-dropdown">
-              <NavDropdown.Item href="#action/3.1">Action</NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.2">
-                Another action
+            <Nav.Link as={Link} href="/">
+              Home
+            </Nav.Link>
+            <Nav.Link as={Link} href="/about">
+              About
+            </Nav.Link>
+            <NavDropdown title="Products" id="basic-nav-dropdown">
+              <NavDropdown.Item as={Link} href="/product">
+                Product1
               </NavDropdown.Item>
-              <NavDropdown.Item href="#action/3.3">Something</NavDropdown.Item>
-              <NavDropdown.Divider />
-              <NavDropdown.Item href="#action/3.4">
-                Separated link
+              <NavDropdown.Item as={Link} href="/product">
+                Product2
+              </NavDropdown.Item>
+              <NavDropdown.Item as={Link} href="/product">
+                Product3
+              </NavDropdown.Item>
+              <NavDropdown.Item as={Link} href="/product">
+                Product4
               </NavDropdown.Item>
             </NavDropdown>
           </Nav>
