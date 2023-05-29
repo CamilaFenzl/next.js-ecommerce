@@ -16,16 +16,16 @@ export default function Navigation() {
               About
             </Nav.Link>
             <NavDropdown title="Products" id="basic-nav-dropdown">
-              <NavDropdown.Item as={Link} href="/product">
+              <NavDropdown.Item as={Link} href="/product/1">
                 Product1
               </NavDropdown.Item>
-              <NavDropdown.Item as={Link} href="/product">
+              <NavDropdown.Item as={Link} href="/product/2">
                 Product2
               </NavDropdown.Item>
-              <NavDropdown.Item as={Link} href="/product">
+              <NavDropdown.Item as={Link} href="/product/3">
                 Product3
               </NavDropdown.Item>
-              <NavDropdown.Item as={Link} href="/product">
+              <NavDropdown.Item as={Link} href="/product/4">
                 Product4
               </NavDropdown.Item>
             </NavDropdown>
