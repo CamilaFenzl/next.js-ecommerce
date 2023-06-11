@@ -1,7 +1,7 @@
 export default function Page() {
   return (
     <div className="about">
-      <h1>Embrace your body with our empowerment ceramics.</h1>
+      <h1>Embrace your body.</h1>
       <p>
         <br />
         <h4>Slow handmade e-commerce</h4>
@@ -11,6 +11,7 @@ export default function Page() {
         <br />
         E-mail us and order your unique ceramic body!
       </p>
+      <img src="bodymarks.jpg" alt="woman body with marks" width="400"></img>
     </div>
   );
 }

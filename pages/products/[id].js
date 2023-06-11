@@ -1,27 +1,83 @@
 'use client';
 
 import { useRouter } from 'next/router';
-//import Container from 'react-bootstrap/Container';
-//import Row from 'react-bootstrap/Row';
-//import Col from 'react-bootstrap/Col';
+import {
+  Button,
+  ButtonGroup,
+  Col,
+  Container,
+  Image,
+  Row,
+} from 'react-bootstrap';
+import { useState } from 'react';
 
 const products = [
-  { id: 0, imgSrc: '/boobs.jpg', name: 'Natural boobs!' },
-  { id: 1, imgSrc: '/rosabody.jpg', name: 'Beautiful vase!' },
-  { id: 2, imgSrc: '/boobsvase.jpg', name: 'Diversity for my plants!' },
-  { id: 3, imgSrc: '/plussizewoman.jpg', name: 'My beautiful body!' },
+  {
+    id: 0,
+    imgSrc: '/boobs.jpg',
+    name: 'Título produto 0!',
+    price: 10,
+    description: 'Handmade product.',
+  },
+  {
+    id: 1,
+    imgSrc: '/rosabody.jpg',
+    name: 'Título produto 1!',
+    price: 20,
+    description: 'Handmade product.',
+  },
+  {
+    id: 2,
+    imgSrc: '/yogadame.jpg',
+    name: 'Título produto 2!',
+    price: 30,
+    description: 'Handmade product.',
+  },
+  {
+    id: 3,
+    imgSrc: '/plussizewoman.jpg',
+    name: 'Título produto 3!',
+    price: 40,
+    description: 'Handmade product.',
+  },
 ];
 
 export default function Page() {
   const router = useRouter();
+  const [quantity, setQuantity] = useState(0);
   return (
-    <div>
-      <h1>This is the product page {products[+router.query.id]?.name} </h1>
-      <h3>
-        "Neque porro quisquam est qui dolorem ipsum quia dolor sit amet,
-        consectetur, adipisci velit.
-      </h3>
-      <img src={products[+router.query.id]?.imgSrc} width="400"></img>
-    </div>
+    <>
+      <Container>
+        <Row>
+          <Col sm={5}>
+            <Image src={products[+router.query.id]?.imgSrc} fluid />
+          </Col>
+          <Col sm={7}>
+            <h1>{products[+router.query.id]?.name} </h1>
+            <p>{products[+router.query.id]?.description}</p>
+
+            <Button variant="primary" size="sm">
+              Buy
+            </Button>
+
+            <ButtonGroup size="sm">
+              <Button
+                variant="outline-primary"
+                onClick={() => setQuantity(quantity - 1)}
+              >
+                -
+              </Button>
+              <span>{quantity}</span>
+              <Button
+                variant="outline-primary"
+                onClick={() => setQuantity(quantity + 1)}
+              >
+                +
+              </Button>
+            </ButtonGroup>
+          </Col>
+        </Row>
+      </Container>
+    </>
   );
 }
