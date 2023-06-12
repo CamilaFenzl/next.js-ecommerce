@@ -2,6 +2,9 @@ import Link from 'next/link';
 import { Container, Nav, NavDropdown, Navbar } from 'react-bootstrap';
 import React from 'react';
 export default function Navigation() {
+  const [cookies, setCookie, removeCookie] = useCookies(['camilashop-cart']);
+
+  console.log('cookies', cookies);
   return (
     <>
       <Navbar bg="light" expand="lg">
@@ -30,6 +33,9 @@ export default function Navigation() {
                   Woman
                 </NavDropdown.Item>
               </NavDropdown>
+              <Nav.Link as={Link} href="/cart">
+                Cart
+              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
         </Container>

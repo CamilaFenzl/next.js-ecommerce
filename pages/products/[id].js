@@ -10,6 +10,7 @@ import {
   Row,
 } from 'react-bootstrap';
 import { useState } from 'react';
+import { useCookies } from 'react-cookie';
 
 const products = [
   {
@@ -44,26 +45,42 @@ const products = [
 
 export default function Page() {
   const router = useRouter();
-  const [quantity, setQuantity] = useState(0);
+  const [quantity, setQuantity] = useState(1);
+  const currentProduct = products[+router.query.id];
+  const [cookies, setCookie, removeCookie] = useCookies(['camilashop-cart']);
+
+  const currentCartCookie = cookies['camilashop-cart'] ?? {};
+  const parsedCart = JSON.parse(currentCartCookie);
+
+  useEffect(() => {
+    console.log('Cookies: ', cookies);
+  }, [cookies]);
+
+  const changeCart = () => {
+    console.log(cookies);
+    parsedCart[currentProduct.id] = quantity;
+    setCookies('camilashop-cart', JSON.stringify(parsedCart), { path: '/' });
+  };
+
   return (
     <>
       <Container>
         <Row>
           <Col sm={5}>
-            <Image src={products[+router.query.id]?.imgSrc} fluid />
+            <Image src={currentProduct?.imgSrc} fluid />
           </Col>
           <Col sm={7}>
-            <h1>{products[+router.query.id]?.name} </h1>
-            <p>{products[+router.query.id]?.description}</p>
+            <h1>{currentProduct?.name} </h1>
+            <p>{currentProduct?.description}</p>
 
-            <Button variant="primary" size="sm">
+            <Button variant="primary" size="sm" onClick={changeCart()}>
               Buy
             </Button>
 
             <ButtonGroup size="sm">
               <Button
                 variant="outline-primary"
-                onClick={() => setQuantity(quantity - 1)}
+                onClick={() => setQuantity(quantity > 1 ? quantity - 1 : 1)}
               >
                 -
               </Button>
