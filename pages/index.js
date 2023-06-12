@@ -17,10 +17,7 @@ export default function Page() {
             <Card.Img variant="top" src="/boobs.jpg" alt="mug" fluid />
             <Card.Body>
               <Card.Title>Mug</Card.Title>
-              <Card.Text>
-                Handmade ceramic mug. Color may varay.
-                <br />
-              </Card.Text>
+              <Card.Text>Handmade ceramic mug. Color may varay.</Card.Text>
               <Link href="/products/0">
                 <Button variant="color" size="sm">
                   View product
@@ -36,7 +33,6 @@ export default function Page() {
               <Card.Title>Yoga positions</Card.Title>
               <Card.Text>
                 Handmade ceramic sculpture. Color may varay.
-                <br />
               </Card.Text>
               <Link href="/products/1">
                 <Button variant="color" size="sm">
@@ -51,10 +47,7 @@ export default function Page() {
             <Card.Img variant="top" src="/rosabody.jpg" alt="vase" fluid />
             <Card.Body>
               <Card.Title>Rosa body</Card.Title>
-              <Card.Text>
-                Handmade ceramic vase. Color may varay.
-                <br />
-              </Card.Text>
+              <Card.Text>Handmade ceramic vase. Color may varay.</Card.Text>
               <Link href="/products/2">
                 <Button variant="color" size="sm">
                   View product
@@ -76,7 +69,6 @@ export default function Page() {
               <Card.Title>Curvilicious body</Card.Title>
               <Card.Text>
                 Handmade ceramic sculpture. Color may varay.
-                <br />
               </Card.Text>
               <Link href="/products/3">
                 <Button variant="color" size="sm">

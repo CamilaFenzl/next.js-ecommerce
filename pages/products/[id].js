@@ -9,7 +9,7 @@ import {
   Image,
   Row,
 } from 'react-bootstrap';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
 
 const products = [
@@ -49,17 +49,13 @@ export default function Page() {
   const currentProduct = products[+router.query.id];
   const [cookies, setCookie, removeCookie] = useCookies(['camilashop-cart']);
 
-  const currentCartCookie = cookies['camilashop-cart'] ?? {};
-  const parsedCart = JSON.parse(currentCartCookie);
-
-  useEffect(() => {
-    console.log('Cookies: ', cookies);
-  }, [cookies]);
-
   const changeCart = () => {
-    console.log(cookies);
-    parsedCart[currentProduct.id] = quantity;
-    setCookies('camilashop-cart', JSON.stringify(parsedCart), { path: '/' });
+    let currentCartCookie = cookies['camilashop-cart'];
+    currentCartCookie = currentCartCookie ?? {};
+    currentCartCookie[currentProduct?.id] = quantity;
+    setCookie('camilashop-cart', currentCartCookie, { path: '/' });
+    setQuantity(1);
+    alert('Product added to cart!');
   };
 
   return (
@@ -73,7 +69,7 @@ export default function Page() {
             <h1>{currentProduct?.name} </h1>
             <p>{currentProduct?.description}</p>
 
-            <Button variant="primary" size="sm" onClick={changeCart()}>
+            <Button variant="primary" size="sm" onClick={() => changeCart()}>
               Buy
             </Button>
 
