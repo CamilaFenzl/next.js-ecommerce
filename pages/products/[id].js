@@ -4,45 +4,17 @@ import { useRouter } from 'next/router';
 import {
   Button,
   ButtonGroup,
+  InputGroup,
+  Form,
   Col,
   Container,
   Image,
   Row,
 } from 'react-bootstrap';
+import './products.scss';
 import { useEffect, useState } from 'react';
 import { useCookies } from 'react-cookie';
-
-const products = [
-  {
-    id: 0,
-    imgSrc: '/boobs.jpg',
-    name: 'Título produto 0!',
-    price: 10,
-    description: 'Handmade product.',
-  },
-  {
-    id: 1,
-    imgSrc: '/rosabody.jpg',
-    name: 'Título produto 1!',
-    price: 20,
-    description: 'Handmade product.',
-  },
-  {
-    id: 2,
-    imgSrc: '/yogadame.jpg',
-    name: 'Título produto 2!',
-    price: 30,
-    description: 'Handmade product.',
-  },
-  {
-    id: 3,
-    imgSrc: '/plussizewoman.jpg',
-    name: 'Título produto 3!',
-    price: 40,
-    description: 'Handmade product.',
-  },
-];
-
+import { products } from '../../app/products';
 export default function Page() {
   const router = useRouter();
   const [quantity, setQuantity] = useState(1);
@@ -52,42 +24,64 @@ export default function Page() {
   const changeCart = () => {
     let currentCartCookie = cookies['camilashop-cart'];
     currentCartCookie = currentCartCookie ?? {};
-    currentCartCookie[currentProduct?.id] = quantity;
+    currentCartCookie[currentProduct?.id] =
+      currentCartCookie[currentProduct?.id] + quantity;
+
     setCookie('camilashop-cart', currentCartCookie, { path: '/' });
     setQuantity(1);
     alert('Product added to cart!');
   };
-
+  const inputOnChange = (event) => {
+    console.log(event);
+    setQuantity(event.target.value);
+  };
   return (
     <>
       <Container>
         <Row>
           <Col sm={5}>
-            <Image src={currentProduct?.imgSrc} fluid />
+            <Image
+              src={currentProduct?.imgSrc}
+              fluid
+              data-test-id="product-image"
+            />
           </Col>
           <Col sm={7}>
             <h1>{currentProduct?.name} </h1>
             <p>{currentProduct?.description}</p>
+            <div>
+              <span data-test-id="product-price">{currentProduct?.price}</span>{' '}
+              <span>€</span>{' '}
+            </div>
 
-            <Button variant="primary" size="sm" onClick={() => changeCart()}>
+            <Button
+              variant="primary"
+              size="sm"
+              onClick={() => changeCart()}
+              data-test-id="product-add-to-cart"
+            >
               Buy
             </Button>
-
-            <ButtonGroup size="sm">
+            <InputGroup className="mb-3 mx-3 product-controls">
               <Button
-                variant="outline-primary"
+                variant="outline-secondary"
                 onClick={() => setQuantity(quantity > 1 ? quantity - 1 : 1)}
               >
                 -
               </Button>
-              <span>{quantity}</span>
+              <Form.Control
+                defaultValue={quantity}
+                value={quantity}
+                onChange={inputOnChange}
+                data-test-id="product-quantity"
+              />
               <Button
-                variant="outline-primary"
+                variant="outline-secondary"
                 onClick={() => setQuantity(quantity + 1)}
               >
                 +
               </Button>
-            </ButtonGroup>
+            </InputGroup>
           </Col>
         </Row>
       </Container>

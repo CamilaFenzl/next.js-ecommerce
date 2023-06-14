@@ -14,7 +14,7 @@ export default function Page() {
             <ul>
               {Object.keys(currentCartCookie).map((key) => {
                 return (
-                  <li>
+                  <li data-test-id={`cart-product-${key}`}>
                     <strong>Product id: {key}</strong> |
                     <span> Quantity: {currentCartCookie[key]}</span>
                   </li>

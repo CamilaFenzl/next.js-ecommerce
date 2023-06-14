@@ -1,0 +1,58 @@
+export const products = [
+  {
+    id: 0,
+    imgSrc: '/boobs.jpg',
+    name: 'Título produto 0!',
+    price: 10,
+    description: 'Handmade product.',
+  },
+  {
+    id: 1,
+    imgSrc: '/yogadame.jpg',
+    name: 'caraca!',
+    price: 20,
+    description: 'Handmade product.',
+  },
+  {
+    id: 2,
+    imgSrc: '/rosabody.jpg',
+    name: 'Título produto 2!',
+    price: 30,
+    description: 'Handmade product.',
+  },
+  {
+    id: 3,
+    imgSrc: '/plussizewoman.jpg',
+    name: 'Título produto 3!',
+    price: 40,
+    description: 'Handmade product.',
+  },
+  {
+    id: 0,
+    imgSrc: '/boobs.jpg',
+    name: 'Título produto 0!',
+    price: 10,
+    description: 'Handmade product.',
+  },
+  {
+    id: 1,
+    imgSrc: '/yogadame.jpg',
+    name: 'caraca!',
+    price: 20,
+    description: 'Handmade product.',
+  },
+  {
+    id: 2,
+    imgSrc: '/rosabody.jpg',
+    name: 'Título produto 2!',
+    price: 30,
+    description: 'Handmade product.',
+  },
+  {
+    id: 3,
+    imgSrc: '/plussizewoman.jpg',
+    name: 'Título produto 3!',
+    price: 40,
+    description: 'Handmade product.',
+  },
+];
