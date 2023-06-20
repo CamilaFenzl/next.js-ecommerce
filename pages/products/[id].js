@@ -3,7 +3,6 @@
 import { useRouter } from 'next/router';
 import {
   Button,
-  ButtonGroup,
   InputGroup,
   Form,
   Col,
@@ -25,7 +24,7 @@ export default function Page() {
     let currentCartCookie = cookies['camilashop-cart'];
     currentCartCookie = currentCartCookie ?? {};
     currentCartCookie[currentProduct?.id] =
-      currentCartCookie[currentProduct?.id] + quantity;
+      (currentCartCookie[currentProduct?.id] ?? 0) + quantity;
 
     setCookie('camilashop-cart', currentCartCookie, { path: '/' });
     setQuantity(1);
