@@ -1,37 +1,28 @@
 'use client';
 
 import { useRouter } from 'next/router';
+import { useState } from 'react';
 import {
   Button,
-  InputGroup,
-  Form,
   Col,
   Container,
+  Form,
   Image,
+  InputGroup,
   Row,
 } from 'react-bootstrap';
-import './products.scss';
-import { useEffect, useState } from 'react';
-import { useCookies } from 'react-cookie';
 import { products } from '../../app/products';
-export default function Page() {
+import './products.scss';
+export default function Page({ changeProduct }) {
   const router = useRouter();
   const [quantity, setQuantity] = useState(1);
   const currentProduct = products[+router.query.id];
-  const [cookies, setCookie, removeCookie] = useCookies(['camilashop-cart']);
 
   const changeCart = () => {
-    let currentCartCookie = cookies['camilashop-cart'];
-    currentCartCookie = currentCartCookie ?? {};
-    currentCartCookie[currentProduct?.id] =
-      (currentCartCookie[currentProduct?.id] ?? 0) + quantity;
-
-    setCookie('camilashop-cart', currentCartCookie, { path: '/' });
-    setQuantity(1);
+    changeProduct(currentProduct.id, quantity);
     alert('Product added to cart!');
   };
   const inputOnChange = (event) => {
-    console.log(event);
     setQuantity(event.target.value);
   };
   return (

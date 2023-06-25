@@ -1,8 +1,25 @@
 import Link from 'next/link';
 import { Container, Nav, NavDropdown, Navbar } from 'react-bootstrap';
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { products } from '../products';
-export default function Navigation() {
+import { useCookies } from 'react-cookie';
+import { BagFill } from 'react-bootstrap-icons';
+
+export default function Navigation({ currentCartCookie }) {
+  console.log('totoro', currentCartCookie);
+
+  let count = 0;
+  // Object.keys returns an array with all keys of an object
+  const cartList = Object.keys(currentCartCookie).map((key) => {
+    console.log('this is cookie with id', key);
+    const product = products.find((p) => {
+      console.log('this is product with id', p.id, 'cookie id', key);
+      return p.id == key;
+    });
+    product.quantity = currentCartCookie[key];
+    count += product.quantity;
+  });
+  console.log(cartList, products);
   return (
     <header>
       <Navbar bg="light" expand="lg">
@@ -29,11 +46,11 @@ export default function Navigation() {
                   );
                 })}
               </NavDropdown>
-              <Nav.Link as={Link} href="/cart">
-                Cart
-              </Nav.Link>
             </Nav>
           </Navbar.Collapse>
+          <Nav.Link as={Link} href="/cart" data-test-id="cart-link">
+            <BagFill /> <span data-test-id="cart-count">{count}</span>
+          </Nav.Link>
         </Container>
       </Navbar>
     </header>

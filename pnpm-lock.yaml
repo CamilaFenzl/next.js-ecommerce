@@ -16,6 +16,9 @@ dependencies:
   react-bootstrap:
     specifier: ^2.7.4
     version: 2.7.4(@types/react@18.2.6)(react-dom@18.2.0)(react@18.2.0)
+  react-bootstrap-icons:
+    specifier: ^1.10.3
+    version: 1.10.3(react@18.2.0)
   react-cookie:
     specifier: ^4.1.1
     version: 4.1.1(react@18.2.0)
@@ -4112,6 +4115,15 @@ packages:
       ini: 1.3.8
       minimist: 1.2.8
       strip-json-comments: 2.0.1
+    dev: false
+
+  /react-bootstrap-icons@1.10.3(react@18.2.0):
+    resolution: {integrity: sha512-j4hSby6gT9/enhl3ybB1tfr1slZNAYXDVntcRrmVjxB3//2WwqrzpESVqKhyayYVaWpEtnwf9wgUQ03cuziwrw==}
+    peerDependencies:
+      react: '>=16.8.6'
+    dependencies:
+      prop-types: 15.8.1
+      react: 18.2.0
     dev: false
 
   /react-bootstrap@2.7.4(@types/react@18.2.6)(react-dom@18.2.0)(react@18.2.0):
