@@ -11,7 +11,7 @@ import {
   InputGroup,
   Row,
 } from 'react-bootstrap';
-import { products } from '../../app/products';
+import { products } from '../products';
 import './products.scss';
 export default function Page({ changeProduct }) {
   const router = useRouter();

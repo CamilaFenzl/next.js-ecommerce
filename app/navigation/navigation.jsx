@@ -1,6 +1,6 @@
 import Link from 'next/link';
 import { Container, Nav, NavDropdown, Navbar } from 'react-bootstrap';
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { products } from '../products';
 import { useCookies } from 'react-cookie';
 import { BagFill } from 'react-bootstrap-icons';

@@ -8,7 +8,7 @@ import {
   Image,
   Row,
 } from 'react-bootstrap';
-import { products } from '../app/products';
+import { products } from './products';
 export default function Page() {
   return (
     <Container>
